@@ -13,7 +13,7 @@ Requirements
   * [Composer][3]
   * [Symfony CLI][4]
   * and the [usual Symfony application requirements][5].
-  * A [Twilio SendGrid] [8] account.
+  * A [Twilio SendGrid][8] account.
 
 
 Installation
