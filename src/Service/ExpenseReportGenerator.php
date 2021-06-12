@@ -86,9 +86,9 @@ class ExpenseReportGenerator {
             ->getActiveSheet()
             ->setCellValue("A$this->currentIndex", $this->currentIndex - 1)
             ->setCellValue("B$this->currentIndex", $expense->getOwner())
-            ->setCellValue("C$this->currentIndex", $expense->getAmount())
-            ->setCellValue("D$this->currentIndex", $expense->getIncurredOn())
-            ->setCellValue("E$this->currentIndex", $expense->getStatus());
+            ->setCellValue("C$this->currentIndex", number_format($expense->getAmount(), 2))
+            ->setCellValue("D$this->currentIndex", $expense->getIncurredOn()->format('l jS F, Y'))
+            ->setCellValue("E$this->currentIndex", ucfirst($expense->getStatus()));
         $this->applyThinBorder("A$this->currentIndex:E$this->currentIndex");
         $this->currentIndex++;
     }

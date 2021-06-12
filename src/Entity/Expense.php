@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Exception\UnknownExpenseStatusException;
 use App\Repository\ExpenseRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,7 +53,7 @@ class Expense {
 
     public static function verifyExpenseStatus(string $status) {
 
-        if (!in_array($status, [Expense::PENDING, Expense::DISPUTED, Expense::DISBURSED])) {
+        if (!in_array($status, [self::PENDING, self::DISPUTED, self::DISBURSED])) {
             throw new UnknownExpenseStatusException("Unknown expense status '$status' provided");
         }
     }
@@ -64,9 +65,9 @@ class Expense {
     }
 
     public function getAmount()
-    : ?string {
+    : float {
 
-        return number_format($this->amount, 2);
+        return $this->amount;
     }
 
     public function setAmount(float $amount)
@@ -78,12 +79,12 @@ class Expense {
     }
 
     public function getIncurredOn()
-    : string {
+    : DateTimeInterface {
 
-        return $this->incurredOn->format('l jS F, Y');
+        return $this->incurredOn;
     }
 
-    public function setIncurredOn(\DateTimeInterface $incurredOn)
+    public function setIncurredOn(DateTimeInterface $incurredOn)
     : self {
 
         $this->incurredOn = $incurredOn;
@@ -94,7 +95,7 @@ class Expense {
     public function getStatus()
     : ?string {
 
-        return ucfirst($this->status);
+        return $this->status;
     }
 
     public function setStatus(string $status)

@@ -5,7 +5,7 @@ namespace App\Command;
 use App\Exception\UnknownExpenseStatusException;
 use App\Repository\ExpenseRepository;
 use App\Service\ExpenseReportGenerator;
-use App\Service\SendgridMailer;
+use App\Service\SendGridMailer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,12 +19,12 @@ class GenerateExpenseReportCommand extends Command {
 
     private ExpenseRepository $expenseRepository;
     private ExpenseReportGenerator $reportGenerator;
-    private SendgridMailer $mailer;
+    private SendGridMailer $mailer;
 
     public function __construct(
         ExpenseRepository $expenseRepository,
         ExpenseReportGenerator $reportGenerator,
-        SendgridMailer $mailer
+        SendGridMailer $mailer
     ) {
 
         parent::__construct();

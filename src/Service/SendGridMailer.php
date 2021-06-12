@@ -6,7 +6,7 @@ use SendGrid;
 use SendGrid\Mail\Mail;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class SendgridMailer {
+class SendGridMailer {
 
     private string $apiKey;
     private string $senderEmail;
